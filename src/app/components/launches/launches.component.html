@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div *ngFor="let item of launchesList" class="card flex-row flex-wrap">
+    <div class="card-header border-0">
+        <img src="//placehold.it/200" alt="" />
+    </div>
+    <div class="card-block px-2 py-3">
+        <h3 class="card-title">{{item.name}}</h3>
+        <p class="card-text">Mission: {{item.mission.description}}</p>
+        <p class="card-text">Location:<a href="{{item.pad.location.map_image}}">{{item.pad.location.name}}</a></p>
+        <p class="card-text">Time?</p>
+    </div>
+    <div class="w-100"></div>
+</div>
+
+</div>
