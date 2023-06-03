@@ -1,15 +1,43 @@
 <div class="container mt-5">
-  <div *ngFor="let item of launchesList" class="card flex-row flex-wrap">
+  <div *ngFor="let item of launchesList" class="card flex-row my-5">
+    <div class="card-header border-0">
+        <img [src]="rocketImages[item.rocket.id]" alt="" />
+    </div>
+    <div class="card-block px-2 py-3">
+        <h3 class="card-title">{{item.name}}</h3>
+        <p class="card-text">{{item.launch_service_provider.name}}</p>
+        <p class="card-text">Mission: {{item.mission.description}}</p>
+        <p class="card-text">Location:<a href="{{item.pad.location.map_image}}">{{item.pad.location.name}}</a></p>
+        <p class="card-text">{{item.formattedDate}}</p>
+        <p class="card-text">{{ item.countdown.days }} days, {{ item.countdown.hours }} hours, {{ item.countdown.minutes }} minutes, {{ item.countdown.seconds }} seconds</p>
+    </div>
+    </div>
+    <div class="card flex-row my-5">
+        <div class="col-md-4">
+            <div class="border-0">
+                <img class="rocketImage" src="../../../assets/spacex_image_20190207032501.jpeg" alt="" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card-block px-2 py-3">
+                <h3 class="card-title centered">Falcon 9 Block 5 | Starlink Group 6-4</h3>
+                <p class="card-text centered">SpaceX</p>
+                <p class="card-text">Mission:  A batch of satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.</p>
+                <p class="card-text">Location: <a href="">Cape Canaveral, FL, USA</a></p>
+                <p class="card-text">June 04, 2023 - 11:56:00 CEST</p>
+            </div>
+        </div>
+</div>
+<div class="card flex-row my-5">
     <div class="card-header border-0">
         <img src="//placehold.it/200" alt="" />
     </div>
     <div class="card-block px-2 py-3">
-        <h3 class="card-title">{{item.name}}</h3>
-        <p class="card-text">Mission: {{item.mission.description}}</p>
-        <p class="card-text">Location:<a href="{{item.pad.location.map_image}}">{{item.pad.location.name}}</a></p>
-        <p class="card-text">Time?</p>
+        <h3 class="card-title">Falcon 9 Block 5 | Starlink Group 6-4</h3>
+        <p class="card-text">Mission:  A batch of satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.</p>
+        <p class="card-text">Location:<a href="">Cape Canaveral, FL, USA</a></p>
+        <p class="card-text">2023-06-04T09:56:00Z</p>
     </div>
     <div class="w-100"></div>
 </div>
-
 </div>
