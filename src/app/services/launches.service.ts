@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, timer } from 'rxjs';
 import { LaunchResponse } from '../interfaces/launch-response';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +10,67 @@ import { LaunchResponse } from '../interfaces/launch-response';
 export class LaunchesService {
   private apiKey = 'e5fa3ef94d5a113e6a09f6d5a5abadf403bb251c'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private datePipe: DatePipe) { }
 
   getLaunches(url:string = "https://ll.thespacedevs.com/2.2.0/launch/upcoming"): Observable<LaunchResponse> {
     const headers = new HttpHeaders().set('Authorization', `Token ${this.apiKey}`)
     return this.http.get<LaunchResponse>(url, { headers });
   }
 
-  getRocketImage(rocketId: string) {
-    const rocketUrl = `https://ll.thespacedevs.com/2.2.0/config/launcher/${rocketId}/`;
+  getFormattedLaunchesWithCountdown(): Observable<any[]> {
+    const url = "https://ll.thespacedevs.com/2.2.0/launch/upcoming";
     const headers = new HttpHeaders().set('Authorization', `Token ${this.apiKey}`);
-    return this.http.get<any>(rocketUrl, { headers });
+    
+    return this.http.get(url, { headers }).pipe(
+      map((resp: any) =>{
+        return resp.results.map((launch: any)=> {
+          const formattedDate = this.datePipe.transform(launch.net, 'MMMM d, yyyy - HH:mm z', 'UTC+2');
+          const countdown = this.calculateCountdown(launch.net);
+          return {
+            ...launch,
+            formattedDate,
+            countdown
+          }
+        })
+      }),
+      map((launches:any[]) => {
+        launches.forEach(launch =>{
+          launch.countdownInterval = timer(0, 1000).pipe(
+            map(()=>{
+              launch.countdown = this.calculateCountdown(launch.net);
+            })
+          )
+        });
+        return launches;
+      })
+    )
+  }
+
+  calculateCountdown(date: string){
+    const targetDate= new Date(date).getTime();
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference <=0){
+      return{
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+      };
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return {
+      days,
+      hours,
+      minutes,
+      seconds
+    };
   }
 }
 

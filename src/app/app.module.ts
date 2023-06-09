@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LaunchesComponent } from './components/launches/launches.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DatePipe } from '@angular/common';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaunchesComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
