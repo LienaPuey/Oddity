@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LaunchesService } from 'src/app/services/launches.service';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,10 @@ export class HomeComponent implements OnInit {
   constructor( private launchesService: LaunchesService) { }
 
   ngOnInit(): void {
-    // this.getLaunches();
-    // this.startCountdown();
-    // this.getNextThreeLaunches();
+    this.getLaunches();
+    this.startCountdown();
+    this.getNextThreeLaunches();
+    Aos.init();
   }
 
   getLaunches() {

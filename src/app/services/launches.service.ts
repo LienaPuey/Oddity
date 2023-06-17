@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, timer } from 'rxjs';
 import { LaunchResponse } from '../interfaces/launch-response';
+import { DetailResponse } from '../interfaces/launch-detail';
 import { DatePipe } from '@angular/common';
 
 @Injectable({
@@ -17,7 +18,12 @@ export class LaunchesService {
     return this.http.get<LaunchResponse>(url, { headers });
   }
 
-  getFormattedLaunchesWithCountdown(): Observable<any[]> {
+  getLaunchDetail(id: string): Observable<any>{
+    return this.http.get<DetailResponse>(`https://ll.thespacedevs.com/2.2.0/launch/${id}`);
+  }
+  
+  
+  getFormattedLaunchesWithCountdown(): Observable<LaunchResponse[]> {
     const url = "https://ll.thespacedevs.com/2.2.0/launch/upcoming";
     const headers = new HttpHeaders().set('Authorization', `Token ${this.apiKey}`);
     

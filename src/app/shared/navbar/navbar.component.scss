@@ -1,4 +1,19 @@
-.font{
-  font-family: 'Roboto Slab', serif;
-  font-size: 25px;
+$yellow: #fae84a;
+
+.logo{
+  font-size: 30px;
+  color: $yellow !important;
+}
+
+.menu:hover{
+  color: $yellow !important;
+}
+
+.navBorder{
+  border-bottom: 3px solid $yellow;
+}
+
+.navbar-scrolled{
+  background-color: black;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }

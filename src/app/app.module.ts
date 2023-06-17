@@ -7,13 +7,17 @@ import { LaunchesComponent } from './components/launches/launches.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DatePipe } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
+import { LaunchComponent } from './components/launch/launch.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaunchesComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    LaunchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
