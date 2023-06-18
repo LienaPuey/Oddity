@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 export class LaunchesService {
   private apiKey = 'e5fa3ef94d5a113e6a09f6d5a5abadf403bb251c'
 
-  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient, public datePipe: DatePipe) { }
 
   getLaunches(url:string = "https://ll.thespacedevs.com/2.2.0/launch/upcoming"): Observable<LaunchResponse> {
     const headers = new HttpHeaders().set('Authorization', `Token ${this.apiKey}`)
