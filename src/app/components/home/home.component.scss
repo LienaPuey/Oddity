@@ -7,9 +7,6 @@ $yellow: #fae84a;
   background-image: linear-gradient(rgba(0, 0, 0, 0.418), rgba(143, 141, 143, 0.377)), url("../../../assets/peakpx.jpg"); 
 }
 
-.yellow {
-   color: $yellow;
-}
 .fontBigTittle{
   font-family: 'Orbitron', sans-serif;
   font-size: 100px;
@@ -125,26 +122,4 @@ $yellow: #fae84a;
   color: white;
 }
 
-.buttonLaunch{
-  background-color: $yellow;
-
-  &:hover{
-    color:black;
-    animation: hoverAnimation 2s linear infinite;
-  }
-}
-@keyframes hoverAnimation {
-  0% {
-    box-shadow: 0 0 0 0 rgba($yellow, 0.7);
-  }
-  40% {
-    box-shadow: 0 0 0 20px rgba($yellow, 0);
-  }
-  80% {
-    box-shadow: 0 0 0 20px rgba($yellow, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba($yellow, 0);
-  }
-}
 

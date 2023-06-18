@@ -15,7 +15,7 @@
       <h2 data-aos="fade-up" data-aos-duration="1000" class="fontMedium yellow mb-4">Next Upcoming Launch</h2>
       <div data-aos="zoom-in" data-aos-duration="1000" *ngIf="firstLaunch" class="col-md-12 card card-background text-white p-5" [style.background-image]="'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(' + firstLaunch.image + ')'">
         <div class="card-body">
-          <h3 class="card-title my-3 fontMedium">{{firstLaunch.name}}</h3>
+          <h3 class="card-title my-3 fontMedium yellow">{{firstLaunch.name}}</h3>
           <h3 class="card-text mb-3 fontText">{{ firstLaunch.countdown.days }} days, {{ firstLaunch.countdown.hours }} hours, {{ firstLaunch.countdown.minutes }} minutes, {{ firstLaunch.countdown.seconds }} seconds</h3>
           <h4 class="card-text mb-3 fontText"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event me-2" viewBox="0 0 16 16">
             <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
@@ -43,6 +43,8 @@
         </div>
       </div>
     </div>
+
+    <a  routerLink="/launches" class=" col-4 mt-4 btn buttonLaunch rounded-pill fontText">View Upcoming Launches</a>
 <!-- 
     <div class="col-3">
       <div class="card rocketCard" style="width: 18rem; height: 28em;">
